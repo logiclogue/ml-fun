@@ -16,7 +16,7 @@ y = tf.placeholder("float",shape=[None,10])
 
 #random initialzation for weights
 w = tf.Variable(tf.random_normal([784,10]))
-#yhat -> predicted values 
+#yhat -> predicted values
 yhat = tf.matmul(x,w)
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y,logits=yhat))
 optmizer = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
@@ -28,10 +28,10 @@ with tf.Session() as sess:
     #mini batch size = 128
 
     for i in range(100):
-        for start, end in zip(range(0, len(trX), 128), range(128, len(trX)+1, 128)):
+        print("Epoch " + str(i))
+        for start, end in zip(range(0, len(trX), 1), range(1, len(trX)+1, 1)):
             _,c=sess.run([optmizer,cost], feed_dict={x: trX[start:end], y: trY[start:end]})
             cost_values.append(c)
-       # print(c)
     #print(sess.run(w))
     #plt.show(cost_values)
-    joblib.dump(sess.run(w), 'weights.pkl') 
+    joblib.dump(sess.run(w), 'weights.pkl')

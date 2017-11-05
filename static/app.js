@@ -12,7 +12,7 @@
         }
 
         axios.post('/result', output).then(function (response) {
-            console.log(response);
+            console.log("Result: ", response.data);
         });
     });
 
