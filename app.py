@@ -8,10 +8,8 @@ def index():
 
 @app.route("/result",methods=["POST"])
 def result():
-	print(request.get_data())
-	return "works!" 
-
-
+	print(request.get_json())
+	return "works!"
 
 if __name__ == '__main__':
 	app.run(debug=True)
